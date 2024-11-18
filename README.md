@@ -38,7 +38,7 @@ This project is a Location Logging API built using NestJS and TypeScript. The AP
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/location-logging-api.git
+   git clone https://github.com/mertalicikoglu/location-logging-api.git
    cd location-logging-api
    ```
 
