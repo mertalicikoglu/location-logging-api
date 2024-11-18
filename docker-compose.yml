@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: location_api
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://myuser:mypassword@db:5432/location_db
+      RABBITMQ_URI: amqp://guest:guest@rabbitmq:5672
+      REDIS_HOST: redis
+    depends_on:
+      - db
+      - rabbitmq
+      - redis
+    networks:
+      - app_network
+    command: >
+      sh -c "npm install && npm run build && npm run start:prod"
+
+  db:
+    image: postgres:14-alpine
+    container_name: location_db
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: location_db
+    ports:
+      - "5432:5432"
+    networks:
+      - app_network
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - app_network
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  pgdata:
+  rabbitmq_data:
+
