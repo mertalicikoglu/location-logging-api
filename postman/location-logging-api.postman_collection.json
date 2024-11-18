@@ -1,0 +1,88 @@
+{
+    "info": {
+      "name": "Location Logging API",
+      "description": "API for logging user locations and checking area entries.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Add Location",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"userId\": \"user1\",\n  \"latitude\": 41.015137,\n  \"longitude\": 28.979530\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/locations",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["locations"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Logs",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3000/logs",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["logs"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Add Area",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"Test Area\",\n  \"latitude\": 41.015137,\n  \"longitude\": 28.979530,\n  \"radius\": 1000\n}"
+          },
+          "url": {
+            "raw": "http://localhost:3000/areas",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["areas"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Get Areas",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3000/areas",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["areas"]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  
