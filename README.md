@@ -49,7 +49,7 @@ This project is a Location Logging API built using NestJS and TypeScript. The AP
 
 3. Set up environment variables by creating a `.env` file in the root directory. Example configuration:
    ```env
-   DATABASE_URL=postgres://myuser:mypassword@localhost:5432/location_data
+   DATABASE_URL=postgres://myuser:mypassword@localhost:5432/location_db
    RABBITMQ_URI=amqp://guest:guest@localhost:5672
    THROTTLE_TTL=60
    THROTTLE_LIMIT=5
